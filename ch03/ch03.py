@@ -1,10 +1,12 @@
+#coding=utf-8
+
 from keras.models import Sequential
 from keras.layers import Dense
 import tensorflow as tf
 import numpy as np
 
 # 设定随机数种子
-np.random.seed()
+np.random.seed(7)
 
 # 导入数据
 dataset = np.loadtxt('datasets/pima-indians-diabetes-data.csv', delimiter=',')
