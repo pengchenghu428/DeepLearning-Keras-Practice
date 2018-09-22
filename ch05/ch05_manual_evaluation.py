@@ -1,4 +1,8 @@
-#coding=utf-8
+# -*- coding: utf-8 -*-
+# @Time    : 2018/9/21 10:20
+# @Author  : pengchenghu
+# @FileName: ch05_manual_evaluation.py
+# @Software: PyCharm
 
 from keras.models import Sequential
 from keras.layers import Dense
