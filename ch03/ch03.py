@@ -1,8 +1,11 @@
-#coding=utf-8
+# -*- coding: utf-8 -*-
+# @Time    : 2018/9/21 9:50
+# @Author  : pengchenghu
+# @FileName: ch03.py
+# @Software: PyCharm
 
 from keras.models import Sequential
 from keras.layers import Dense
-import tensorflow as tf
 import numpy as np
 
 # 设定随机数种子
