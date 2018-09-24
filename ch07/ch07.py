@@ -23,7 +23,7 @@ x = dataset.data
 y = dataset.target
 
 # 设定随机数种子
-seed = 8
+seed = 7
 np.random.seed(seed)
 
 
