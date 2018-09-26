@@ -68,7 +68,7 @@ grid = GridSearchCV(estimator=model, param_grid=param_grid)
 results = grid.fit(scaler_x, y)
 
 # 输出结果
-print('Best: %f using %s' % (results.best_score_, results.best_score_))
+print('Best: %f using %s' % (results.best_score_, results.best_params_))
 means = results.cv_results_['mean_test_score']
 stds = results.cv_results_['std_test_score']
 params = results.cv_results_['params']
