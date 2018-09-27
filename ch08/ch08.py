@@ -53,9 +53,9 @@ print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 model = KerasRegressor(build_fn=create_model, epochs=200, batch_size=5, verbose=0)
 
 # 设置算法评估基准
-kfold = KFold(n_splits=10, shuffle=True, random_state=seed)
-results = cross_val_score(model, x, y, cv=kfold)
-print('Baseline: %.2f (%.2f) MSE' % (results.mean(), results.std()))
+# kfold = KFold(n_splits=10, shuffle=True, random_state=seed)
+# results = cross_val_score(model, x, y, cv=kfold)
+# print('Baseline: %.2f (%.2f) MSE' % (results.mean(), results.std()))
 
 # 数据标准化，改进算法
 steps = []
@@ -64,7 +64,8 @@ steps.append(('mlp', model))
 pipeline = Pipeline(steps)
 # 设置算法评估基准
 kfold = KFold(n_splits=10, shuffle=True, random_state=seed)
-results = cross_val_score(pipeline, x, y, cv=kfold, scoring='neg_mean_squared_error')
+results = cross_val_score(pipeline, x, y, cv=kfold, scoring='neg_mean_squared_error', verbose=1)
+print(results)
 print('Baseline: %.2f (%.2f) MSE' % (results.mean(), results.std()))
 
 print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
