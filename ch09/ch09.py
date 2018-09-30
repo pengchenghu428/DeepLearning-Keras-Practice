@@ -76,7 +76,7 @@ model = KerasClassifier(build_fn=create_model, epochs=200, batch_size=5, verbose
 # 采用十折交叉验证来评估简单的神经网络模型
 kfold = KFold(n_splits=10, shuffle=True, random_state=seed)
 results = cross_val_score(model, x, y, cv=kfold)
-print('Accuracy: %.2%% (%.2f)' % (results.mean()*100, results.std()))
+print('Accuracy: %.2f%% (%.2f)' % (results.mean() * 100, results.std()))
 
 print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 
