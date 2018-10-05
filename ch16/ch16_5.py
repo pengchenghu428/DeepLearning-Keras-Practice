@@ -53,4 +53,4 @@ if __name__ == '__main__':
     model = create_model()
     model.fit(x_train, y_train, validation_data=(x_validation, y_validation), batch_size=batch_size, \
               epochs=epochs, verbose=2)
-    model.save('imdb-mlp.h5')
+    model.save('imdb-cnn.h5')
