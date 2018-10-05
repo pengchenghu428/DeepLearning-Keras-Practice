@@ -30,8 +30,8 @@ def normalize_preprocessing(x_train, x_validation):
     mean = [125.307, 122.95, 113.865]
     std = [62.9932, 62.0887, 66.7048]
     for i in range(3):
-        x_train[:, :, :, 1] = (x_train[:, :, :, i] - mean[i]) / std[i]
-        x_validation[:, :, :, 1] = (x_validation[:, :, :, i] - mean[i]) / std[i]
+        x_train[:, :, :, i] = (x_train[:, :, :, i] - mean[i]) / std[i]
+        x_validation[:, :, :, i] = (x_validation[:, :, :, i] - mean[i]) / std[i]
 
     return x_train, x_validation
 
@@ -39,7 +39,7 @@ def normalize_preprocessing(x_train, x_validation):
 def scheduler(epoch):
     if epoch <= 60:
         return 0.05
-    if epoch <=120:
+    if epoch <= 120:
         return 0.01
     if epoch <= 160:
         return 0.002
@@ -55,7 +55,9 @@ def build_model():
     model.add(Conv2D(96, (1, 1), padding='same', kernel_regularizer=keras.regularizers.l2(0.0001), \
                      kernel_initializer=RandomNormal(stddev=0.05), activation='relu'))
     model.add(MaxPooling2D(pool_size=(3, 3), strides=(2, 2), padding='same'))
+
     model.add(Dropout(rate=dropout))
+
     model.add(Conv2D(192, (5, 5), padding='same', kernel_regularizer=keras.regularizers.l2(0.0001), \
                      kernel_initializer=RandomNormal(stddev=0.05), activation='relu'))
     model.add(Conv2D(192, (1, 1), padding='same', kernel_regularizer=keras.regularizers.l2(0.0001), \
@@ -63,7 +65,9 @@ def build_model():
     model.add(Conv2D(192, (1, 1), padding='same', kernel_regularizer=keras.regularizers.l2(0.0001), \
                      kernel_initializer=RandomNormal(stddev=0.05), activation='relu'))
     model.add(MaxPooling2D(pool_size=(3, 3), strides=(2, 2), padding='same'))
+
     model.add(Dropout(rate=dropout))
+
     # p145对模型的网络拓扑结构描述是5*5的感受野，但p148代码使用的是3*3的感视野
     model.add(Conv2D(192, (3, 3), padding='same', kernel_regularizer=keras.regularizers.l2(0.0001), \
                      kernel_initializer=RandomNormal(stddev=0.05), activation='relu'))
