@@ -14,6 +14,7 @@ if os.environ.get('DISPLAY','') == '':    # 针对不同环境，使用不同的
     mpl.use('Agg')
 from matplotlib import pyplot as plt
 
+# Keras 提供的数据集将单词转化成整数，这个整数代表单词在整个数据集中的流行程度
 (x_train, y_train), (x_validation, y_validation) = imdb.load_data()
 
 # 合并训练数据集和评估集
@@ -32,6 +33,6 @@ print('Mean: %.2f words (STD: %.2f)' % (np.mean(result), np.std(result)))
 plt.subplot(121)
 plt.boxplot(result)
 plt.subplot(122)
-plt.hist(result)
+plt.hist(result)  # 绘制直方图
 plt.savefig('imdb_display.png')
 plt.close()
